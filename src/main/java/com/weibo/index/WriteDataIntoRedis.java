@@ -8,8 +8,9 @@ public class WriteDataIntoRedis {
     public static void main(String[] args) throws FileNotFoundException {
 //        Jedis jedis = new Jedis("192.168.1.108", 6479);
 //        jedis.auth("nopassword");
-//        Jedis jedis = new Jedis("127.0.0.1", 6379);
-//        System.out.println(jedis.ping());
+        Jedis jedis = new Jedis("127.0.0.1", 6379);
+        jedis.auth("nopassword");
+        System.out.println(jedis.ping());
         System.out.println("The index is "+args[0]);
         System.out.println("The index file is "+args[1]);
         File in = new File(args[1]);
@@ -21,6 +22,7 @@ public class WriteDataIntoRedis {
             for (int i=0; i<num-1; i++){
                 line = br.readLine();
                 System.out.println(line);
+                jedis.zadd(args[0], i*1.0, line);
             }
             line = br.readLine();
 			System.out.println(line);
@@ -28,6 +30,6 @@ public class WriteDataIntoRedis {
             e.printStackTrace();
         }
 
-//        jedis.close();
+        jedis.close();
     }
 }
