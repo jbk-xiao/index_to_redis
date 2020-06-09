@@ -15,11 +15,14 @@ public class WriteDataIntoRedis {
         File in = new File(args[1]);
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(in)));
         try{
-            String id = br.readLine();
-            while (id != null ){
-                System.out.println(id);
-                id = br.readLine();
+            String line = br.readLine();
+            System.out.println("We have "+line+" lines.");
+            int num = Integer.parseInt(line);
+            for (int i=0; i<num-1; i++){
+                System.out.println(line);
+                line = br.readLine();
             }
+            line = br.readLine();
         }catch (IOException e){
             e.printStackTrace();
         }
