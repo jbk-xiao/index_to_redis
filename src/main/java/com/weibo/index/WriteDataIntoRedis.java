@@ -19,10 +19,11 @@ public class WriteDataIntoRedis {
             System.out.println("We have "+line+" lines.");
             int num = Integer.parseInt(line);
             for (int i=0; i<num-1; i++){
-                System.out.println(line);
                 line = br.readLine();
+                System.out.println(line);
             }
             line = br.readLine();
+			System.out.println(line);
         }catch (IOException e){
             e.printStackTrace();
         }
