@@ -1,0 +1,4 @@
+image: redis
+
+tasks:
+  - init: mvn install -DskipTests=false
